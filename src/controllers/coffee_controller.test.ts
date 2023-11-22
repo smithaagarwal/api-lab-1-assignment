@@ -13,4 +13,22 @@ describe("Test /coffee endpoint request", () => {
       name: "Latte",
     });
   });
+  test("GET /coffee with no parameter should return default object", async () => {
+    const res = await request(app).get("/coffee");
+    expect(res.statusCode).toEqual(200);
+    expect(res.body).toEqual({
+      drinkType: "Coffee",
+      name: "Latte",
+    });
+  });
+  test("GET /coffee with different parameter should return object with the parameter passed", async () => {
+    const res = await request(app)
+      .get("/coffee")
+      .query({ coffeeName: "Frappe" });
+    expect(res.statusCode).toEqual(200);
+    expect(res.body).toEqual({
+      drinkType: "Coffee",
+      name: "Frappe",
+    });
+  });
 });
