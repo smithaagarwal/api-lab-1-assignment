@@ -4,3 +4,4 @@ export const app = express();
 app.get("/", router);
 app.get("/coffeelover", router);
 app.get("/coffee", router);
+app.get("/tea", router);
